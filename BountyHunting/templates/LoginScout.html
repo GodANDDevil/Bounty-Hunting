@@ -19,14 +19,14 @@
     </div>
     <script>
         function validation(){
-            var username=document.getElementById("username").value;
-            if (username == ""){
-                alert("Please enter your username");
-        }
-        var condition =/^[A-Za-z]+$/;
-        var result = username.match(condition);
-        if (result == NULL){
-            alert("Enter only text");
+            //Validation of gmail
+            var gmail = ocument.getElementById("gmail").value;
+            var verification = gmail.index("@");
+            var slice1 = gmail.slice(verification);
+            if (gmail == ""){
+                alert("Please enter your Gmail");
+        }else if(slice1 != "@gmail.com"){
+            alert("Please enter a valid Gmail");
         }
     }
     </script>
