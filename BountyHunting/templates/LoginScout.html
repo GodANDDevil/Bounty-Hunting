@@ -14,13 +14,13 @@
             <input type="email" name="gmail" id="gmail">
             <label for="password">Password:</label>
             <input type="password" name="password" id="password">
-            <input type="button" value="Submit">
+            <input type="button" value="Submit" onclick="validation()">
         </form>
     </div>
     <script>
         function validation(){
             //Validation of gmail
-            var gmail = ocument.getElementById("gmail").value;
+            var gmail = document.getElementById("gmail").value;
             var verification = gmail.index("@");
             var slice1 = gmail.slice(verification);
             if (gmail == ""){
