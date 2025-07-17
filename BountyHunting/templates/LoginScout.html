@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{% static 'LoginScout.css' %}">
 </head>
 <body>
-    <div id="box">
+    <div>
         <form action="">
             <label for="username">Username:</label>
             <input type="text" name="username" id="username">
@@ -16,7 +16,21 @@
             <input type="email" name="gmail" id="gmail">
             <label for="password">Password:</label>
             <input type="password" name="password" id="password">
+            <input type="button" value="Submit">
         </form>
     </div>
+    <script>
+        function validation(){
+            var username=document.getElementById("username").value;
+            if (username == ""){
+                alert("Please enter your username");
+        }
+        var condition =/^[A-Za-z]+$/;
+        var result = username.match(condition);
+        if (result == NULL){
+            alert("Enter only text");
+        }
+    }
+    </script>
 </body>
 </html>
