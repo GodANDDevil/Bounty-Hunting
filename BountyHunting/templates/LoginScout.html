@@ -25,10 +25,13 @@
             var slice1 = gmail.slice(verification);
             if (gmail == ""){
                 alert("Please enter your Gmail");
+                return false;
         }else if(slice1 != "@gmail.com"){
             alert("Please enter a valid Gmail");
+            return false;
         }
-    }
+        return true;
+        }
     </script>
 </body>
 </html>
