@@ -9,7 +9,41 @@
 </head>
 <body>
     <div id="box">
-        <h1>Hello</h1>
+        <form action="">
+            <label for="full_name">Full Name:</label>
+            <input type="text" name="full_name" id="full_name">
+            <label for="gmail">Gmail:</label>
+            <input type="email" name="gmail" id="gmail">
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password">
+            <input type="submit" value="Submit" onclick=" validation()">
+        </form>
     </div>
+    <script>
+        function validation(){
+            //Validation full name
+            var fullName = document.getElementById("full_name").value;
+            if (fullName == ""){
+                alert("Please enter your full name");
+                return false;
+            }
+            var conformation =/^[A-Za-z]+$/;
+            if (!conformation.test(fullName)){
+                alert("Please enter a valid full name");
+                return false;
+            }
+            //Validation of gmail
+            var gmail = document.getElementById("gmail").value;
+            var slice1 = gmail.slice(-10);
+            if (gmail == ""){
+                alert("Please enter your Gmail");
+                return false;
+            }else if(slice1 != "@gmail.com"){
+                alert("Please enter a valid Gmail");
+                return false;
+            }
+            return true;
+        }
+    </script>
 </body>
 </html>
