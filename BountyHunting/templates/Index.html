@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'Index.css' %}">
+</head>
+<body>
+    <div id="box">
+        <div id="box1">
+            
+        <div id="lr">
+            <a href="{% url 'LoginSeeker' %}"><p>Login as Seeker</p></a>
+        </div>
+        <div id="lr">
+            <a href="{% url 'RegisterSeeker' %}"><p>Register as Seeker</p></a>
+        </div>
+        <img style="margin-bottom:50px ;" src="{% static 'Seeker.png' %}" alt="Img not found">
+    </div>
+    <div id="box2">
+        <img src="{% static 'Indexref.png' %}" alt="Img not found">
+        <div id="lr">
+            <a href="{% url 'LoginScout' %}"><p>Login as Scout</p></a>
+        </div>
+        <div id="lr">
+            <a href="{% url 'RegisterScout' %}"><p>Register as Scout</p></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
