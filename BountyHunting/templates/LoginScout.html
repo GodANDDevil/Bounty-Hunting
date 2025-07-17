@@ -21,8 +21,7 @@
         function validation(){
             //Validation of gmail
             var gmail = document.getElementById("gmail").value;
-            var verification = gmail.index("@");
-            var slice1 = gmail.slice(verification);
+            var slice1 = gmail.slice(-10);
             if (gmail == ""){
                 alert("Please enter your Gmail");
                 return false;
@@ -34,4 +33,4 @@
         }
     </script>
 </body>
-</html>
+</html>@gmail.com
