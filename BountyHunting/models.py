@@ -15,5 +15,5 @@ class Seeker(models.Model):
     seeker_password = models.CharField(max_length=100)
     seeker_phone = models.CharField(max_length=15)
     seeker_address = models.TextField()
-    seeker_citi_no = models.CharField()
+    seeker_citi_no = models.CharField(max_length=50)
     seeker_dof = models.DateField()
