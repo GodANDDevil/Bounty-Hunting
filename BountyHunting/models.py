@@ -4,14 +4,15 @@ from django.db import models
 
 class Scout(models.Model):
     scout_name = models.CharField(max_length=100)
-    scout_email = models.EmailField()
+    scout_gmail = models.EmailField()
+    scout_password = models.CharField(max_length=100)
     scout_phone = models.CharField(max_length=15)
     scout_address = models.TextField()
     scout_reg_no = models.CharField(max_length=50)
 
 class Seeker(models.Model):
     seeker_name = models.CharField(max_length=100)
-    seeker_email = models.EmailField()
+    seeker_gmail = models.EmailField()
     seeker_password = models.CharField(max_length=100)
     seeker_phone = models.CharField(max_length=15)
     seeker_address = models.TextField()
