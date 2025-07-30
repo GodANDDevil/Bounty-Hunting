@@ -29,7 +29,54 @@
     </div>
     <script>
         function validation(){
-            
+            //Validation of Full Name
+            var fullName = document.getElementById("full_name").value;
+            if (fullName == ""){
+                alert("Please enter your full name");
+                return false;
+            }
+            var conformation = /^[A-Za-z]+$/;
+            if (!conformation.test(fullName)){
+                alert("Please enter a valid full name");
+                return false;
+            }
+            //Validation of gmail
+            var gmail = document.getElementById("gmail").value;
+            var slice1 = gmail.slice(-10);
+            if (gmail == ""){
+                alert("Please enter your Gmail");
+                return false;
+            }else if(slice1 != "@gmail.com"){
+                alert("Please enter a valid Gmail");
+                return false;
+            }
+            //Validation of phone number
+            var phone_number = document.getElementById("phone_number").value;
+            if (phone_number == ""){
+                alert("Please enter your phone number");
+                return false;
+            }else if(phone_number.length != 10){
+                alert("Phone number must be 10 digits long");
+                return false;
+            }
+            //Validation of address
+            var address = document.getElementById("address").value;
+            if (address == ""){
+                alert("Please enter your address");
+                return false;
+            }
+            //Validation of citizenship certificate number
+            var cert_no = document.getElementById("cert_no").value;
+            if (cert_no == ""){
+                alert("Please enter your citizenship certificate number");
+                return false;
+            }
+            //Validation of Date of Birth
+            var dob = document.getElementById("dof").value;
+            if (dob == ""){
+                alert("Please enter your date of birth");
+                return false;
+            }
         }
     </script>
 </body>

@@ -10,8 +10,8 @@
 <body>
     <div id="box">
         <form action="">
-            <label for="name">Full Name:</label>
-            <input type="text" name="full_name" id="full_name">
+            <label for="name">Company Name:</label>
+            <input type="text" name="company_name" id="company_name">
             <label for="gmail">Gamil:</label>
             <input type="email" name="gmail" id="gmail">
             <label for="password">Password:</label>
@@ -27,7 +27,43 @@
     </div>
     <script>
         function validation(){
-            
+            //Validation of Company Name
+            var company_name = document.getElementById("company_name").value;
+            if (company_name == ""){
+                alert("Please enter your company name");
+                return false;
+            }
+            //Validation of gmail
+            var gmail = document.getElementById("gmail").value;
+            var slice1 = gmail.slice(-10);
+            if (gmail == ""){
+                alert("Please enter your Gmail");
+                return false;
+            }else if(slice1 != "@gmail.com"){
+                alert("Please enter a valid Gmail");
+        }
+        //Validation of phone number
+            var phone_number = document.getElementById("phone_number").value;
+            if (phone_number == ""){
+                alert("Please enter your phone number");
+                return false;
+            }else if(phone_number.length != 10){
+                alert("Phone number must be 10 digits long");
+                return false;
+            }
+            //Validation of address
+            var address = document.getElementById("address").value;
+            if (address == ""){
+                alert("Please enter your address");
+                return false;
+            }
+            //Validation of registration number
+            var reg_no = document.getElementById("reg_no").value;
+            if (reg_no == ""){
+                alert("Please enter your business registration number");
+                return false;
+            }
+            return true;
         }
     </script>
 </body>
