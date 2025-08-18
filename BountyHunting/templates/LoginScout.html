@@ -1,23 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    {% load static %}
-    <llesheet" hreink rel="styf="{% static 'LoginScout.css' %}">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Creative Marketing Bounty Hunting</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'LoginScout.css' %}">
 </head>
 <body>
-    <div>
-        <form action="" onsubmit="return validation()">
-            <label for="gmail">Gmail:</label>
-            <input type="email" name="gmail" id="gmail">
-            <label for="password">Password:</label>
-            <input type="password" name="password" id="password">
-            <input type="submit" value="Submit">
-        </form>
+  <header>
+    <a href="{% url 'Index' %}">
+      <div class="logo" aria-label="">
+      <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="#f5b700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="3 2 21 6 21 18 3 22 3 2"></polygon>
+        <polyline points="3 7 15 11 3 15 3 7"></polyline>
+      </svg>
+      <span class="logo-text"> Job Hunting<span class="highlight"></span></span>
     </div>
-    <script>
+    </a>
+    <nav role="navigation" aria-label="Primary navigation">
+      <a href="#" class="active" aria-current="page">Home</a>
+      <a href="#" class="dropdown" aria-haspopup="true" aria-expanded="false">Services</a>
+      <a href="#">Blog</a>
+      <a href="#">About</a>
+      <a href="#">FAQ</a>
+    </nav>
+    <button>
+      <svg aria-hidden="true" viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="7" stroke="#203446" stroke-width="2" fill="none"/>
+        <line x1="21" y1="21" x2="16.65" y2="16.65" stroke="#203446" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </header>
+  <main>
+    <!-- Image Section -->
+    <div class="image-wrapper" aria-hidden="true">
+      <div class="image-shape">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/b9fa1ea2-412d-4fd1-909c-f48a444d2f89.png" alt="Professional man in denim shirt smiling while working on a laptop in a modern office environment with coworkers in background" loading="lazy" />
+        <div class="decorative-line"></div>
+      </div>
+      <svg class="icon rocket" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M12 2l3 9-3-2-3 2 3-9z"></path>
+        <path d="M5 15v4a1 1 0 001 1h12a1 1 0 001-1v-4"></path>
+        <circle cx="12" cy="17" r="3"></circle>
+      </svg>
+      <svg class="icon chat" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <rect x="2" y="4" width="20" height="14" rx="2" ry="2"></rect>
+        <path d="M8 10h8M8 14h5"></path>
+      </svg>
+      <svg class="icon target" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <circle cx="12" cy="12" r="10"></circle>
+        <circle cx="12" cy="12" r="6"></circle>
+        <circle cx="12" cy="12" r="2"></circle>
+        <line x1="22" y1="2" x2="16" y2="8"></line>
+      </svg>
+    </div>
+
+    <!-- Form Section -->
+    <section class="content-left" role="main" tabindex="0">
+      <h1><span>Subscribe Now</span> <strong>to Our Bounty Hunting</strong></h1>
+      <p>Your comprehensive solution for creative marketing.</p>
+      <form action="" onsubmit="return validation()">
+        <input type="email" name="gmail" id="gmail" placeholder="gmail"/>
+        <input type="password" name="password" id="password" placeholder="Password">
+        <button type="submit">Enter</button>
+      </form>
+    </section>
+  </main>
+  <script>
         function validation(){
             //Validation of name
             // var name = document.getElementById("name").value;

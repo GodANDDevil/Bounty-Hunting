@@ -16,3 +16,6 @@ def RegisterScout(request):
 
 def RegisterSeeker(request):
     return render(request, 'RegisterSeeker.html')
+
+def login_index(request):
+    return render(request, 'Index.html')
