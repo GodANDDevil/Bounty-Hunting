@@ -8,25 +8,27 @@
     <link rel="stylesheet" href="{% static 'RegisterSeeker.css' %}">
 </head>
 <body>
-    <div id="box">
-        <form action="">
-            <label for="name">Full Name:</label>
-            <input type="text" name="full_name" id="full_name">
-            <label for="gmail">Gamil:</label>
-            <input type="email" name="gmail" id="gmail">
-            <label for="password">Password:</label>
-            <input type="password" name="password" id="password">
-            <label for="phone_no">Phone Number</label>
-            <input type="number" name="phone_numbr" id="phone_number">
-            <label for="address">Address:</label>
-            <input type="text" name="address" id="address">
-            <label for="reg_no">Citizenship Certificate Number:</label>
-            <input type="text" name="cert_no" id="cert_no">
-            <label for="DOF">Date Of Birth:</label>
-            <input type="date" name="dof" id="dof">
-            <button type="submit">Register</button>
+    <div class="container" role="main">
+    <section class="left-panel" aria-label="Create account panel">
+      <h2>Create Account</h2>
+      <form action="" method="post" onsubmit="return validation()">
+            <input type="text" name="full_name" id="full_name" placeholder="Enter Your Full Name">
+            <input type="email" name="gmail" id="gmail" placeholder="Enter Your Gmail">
+            <input type="password" name="password" id="password" placeholder="Enter Your Password">
+            <input type="number" name="phone_numbr" id="phone_number" placeholder="Enter Your Phone Number">
+            <input type="text" name="address" id="address" placeholder="Enter Your Address">
+            <input type="text" name="cert_no" id="cert_no" placeholder="Enter Your Citizenship Certificate Number">
+            <input type="date" name="dof" id="dof" placeholder="Enter Your Date of Birth">
+            <button type="submit" class="sign-up-btn">Register</button>
         </form>
-    </div>
+    </section>
+    <section class="right-panel" aria-label="Welcome and sign in panel">
+      <div class="welcome-text">
+        <h1>WELCOME Seeker!</h1>
+       
+      </div>
+    </section>
+  </div>
     <script>
         function validation(){
             //Validation of Full Name
