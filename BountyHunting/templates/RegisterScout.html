@@ -12,6 +12,7 @@
     <section class="left-panel" aria-label="Create account panel">
       <h2>Create Account</h2>
       <form action="" method="post" onsubmit="return validation()">
+        {% csrf_token %}
         <input type="text" name="company_name" id="company_name" placeholder="Enter Your Company Name"/>
         <input type="email" name="gmail" id="gmail" placeholder="Enter Your Gmail"/>
         <input type="password" name="password" id="password" placeholder="Enter Your Password"/>
