@@ -6,9 +6,33 @@ def index(request):
     return render(request, 'Index.html')
 
 def LoginScout(request):
+    if request.method == "POST":
+        gmail = request.POST.get('gmail')
+        password = request.POST.get('password')
+        
+        data = Scout.objects.filter(scout_gmail=gmail, scout_password=password)
+        
+        if data:
+            return render(request, 'HomepageScout.html')
+        else:
+            return render(request, 'LoginScout.html', {'error': 'Invalid email or password'})
+
     return render(request, 'LoginScout.html')
 
 def LoginSeeker(request):
+    if request.method == "POST":
+        name = request.POST.get('full_name')
+        gmail = request.POST.get('gmail')
+        password = request.POST.get('password')
+        
+        data = Seeker.objects.filter(seeker_Full_name=name,seeker_gmail=gmail, seeker_password=password)
+
+        if data.exists():
+            return render(request, 'HomepageSeeker.html')
+        else:
+            return render(request, 'LoginSeeker.html', {'error': 'Invalid Name or email or password '})
+
+
     return render(request, 'LoginSeeker.html')
 
 def RegisterScout(request):
@@ -17,7 +41,7 @@ def RegisterScout(request):
         gmail = request.POST.get('gmail')
         password = request.POST.get('password')
         number = request.POST.get('number')
-        text = request.POST.get('text')
+        text = request.POST.get('address')
         reg_no = request.POST.get('reg_no')
         data=Scout(scout_Company_name=company_name,
                    scout_gmail=gmail,
@@ -36,8 +60,8 @@ def RegisterSeeker(request):
         gmail = request.POST.get('gmail')
         password = request.POST.get('password')
         number = request.POST.get('phone_numbr')
-        text = request.POST.get('text')
-        citi_no = request.POST.get('cetr_no')
+        text = request.POST.get('address')
+        citi_no = request.POST.get('cert_no')
         dof = request.POST.get('dof')
         data=Seeker(seeker_Full_name=full_name,
                     seeker_gmail=gmail,

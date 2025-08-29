@@ -58,9 +58,10 @@
 
     <!-- Form Section -->
     <section class="content-left" role="main" tabindex="0">
+      {% csrf_token %}
       <h1><span>Subscribe Now</span> <strong>to Our Bounty Hunting</strong></h1>
       <p>Your comprehensive solution for creative marketing.</p>
-      <form action="" onsubmit="return validation()">
+      <form action="" method="post" onsubmit="return validation()">
         <input type="email" name="gmail" id="gmail" placeholder="gmail"/>
         <input type="password" name="password" id="password" placeholder="Password">
         <button type="submit">Enter</button>

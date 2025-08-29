@@ -76,10 +76,10 @@ WSGI_APPLICATION = 'Bounty_Hunting.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME' : 'bountyhunting_bd ',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME' : 'bountyhunting_bd',
         'HOST' : 'localhost',
-        'USERNAME' : 'root',
+        'USER' : 'root',
         'PASSWORD' : '',
         'PORT' : '3306',
         # 'ENGINE': 'django.db.backends.sqlite3',

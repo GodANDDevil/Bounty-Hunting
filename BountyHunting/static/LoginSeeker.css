@@ -169,7 +169,8 @@
     }
 
     input[type="text"],
-    input[type="email"] {
+    input[type="email"],
+    input[type="password"] {
       padding: 0.75rem 1.25rem;
       font-size: 1rem;
       border-radius: 30px;

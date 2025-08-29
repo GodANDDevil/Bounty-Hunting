@@ -36,10 +36,11 @@
       <p>
        
       </p>
-      <form action="" onsubmit="return validation()">
+      <form action="" method="post" onsubmit="return validation()">
+        {% csrf_token %}
         <input type="text" name="full_name" id="full_name" placeholder="Enter your Full Name"/>
         <input type="email" name="gmail" id="gmail" placeholder="Enter Your Gmail" />
-        <input type="text" name="password" id="password" placeholder="Enter Your Password"/>
+        <input type="password" name="password" id="password" placeholder="Enter Your Password"/>
         <button type="submit">Enter</button>
       </form>
     </section>
