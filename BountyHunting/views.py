@@ -10,13 +10,15 @@ def LoginScout(request):
         gmail = request.POST.get('gmail')
         password = request.POST.get('password')
         
-        data = Scout.objects.filter(scout_gmail=gmail, scout_password=password)
-        
-        if data:
-            return render(request, 'HomepageScout.html')
-        else:
-            return render(request, 'LoginScout.html', {'error': 'Invalid email or password'})
-
+        try:
+            user = Scout.objects.filter(scout_gmail=gmail)
+            if user.scout_password == password:
+                return render(request, 'HomepageScout.html')
+            else:
+                return render(request, 'LoginScout.html')
+        except Scout.DoesNotExist:
+            return render(request, 'LoginScout.html')
+            
     return render(request, 'LoginScout.html')
 
 def LoginSeeker(request):
@@ -25,13 +27,14 @@ def LoginSeeker(request):
         gmail = request.POST.get('gmail')
         password = request.POST.get('password')
         
-        data = Seeker.objects.filter(seeker_Full_name=name,seeker_gmail=gmail, seeker_password=password)
-
-        if data.exists():
-            return render(request, 'HomepageSeeker.html')
-        else:
-            return render(request, 'LoginSeeker.html', {'error': 'Invalid Name or email or password '})
-
+        try:
+            user = Seeker.objects.filter(seeker_Full_name=name)
+            if user.seeker_password == password and user.seeker_gmail == gmail:
+                return render(request, 'HomepageSeeker.html')
+            else:
+                return render(request, 'LoginSeeker.html')
+        except Seeker.DoesNotExist:
+            return render(request, 'LoginSeeker.html')
 
     return render(request, 'LoginSeeker.html')
 
