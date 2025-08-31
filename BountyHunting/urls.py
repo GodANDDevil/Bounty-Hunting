@@ -11,4 +11,8 @@ urlpatterns = [
     # path('LoginScout/', views.index, name='login_index'),
     path('HomepageScout/', views.HomepageScout, name='HomepageScout'),
     path('HomepageSeeker/', views.HomepaheSeeker, name='HomepageSeeker'),
+    path('AboutUs/', views.AboutUs, name='AboutUs'),
+    path('ContactUs/', views.ContactUs, name='ContactUs'),
+    path('PostJob/', views.PostJob, name='PostJob'),
+    path('Apply/', views.Apply, name='Apply'),
 ]

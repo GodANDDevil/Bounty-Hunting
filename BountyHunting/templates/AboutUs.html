@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>About Us</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'AboutUs.css' %}">
+</head>
+<body>
+    <header>
+    <a href="{% url 'Index' %}">
+      <div class="logo" aria-label="">
+      <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="#f5b700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="3 2 21 6 21 18 3 22 3 2"></polygon>
+        <polyline points="3 7 15 11 3 15 3 7"></polyline>
+      </svg>
+      <span class="logo-text"> Job Hunting<span class="highlight"></span></span>
+    </div>
+    </a>
+    <nav role="navigation" aria-label="Primary navigation">
+      <a href="{% url 'AboutUs'%}" class="active" aria-current="page">About Us</a>
+      <a href="{% url 'ContactUs'%}" class="dropdown" aria-haspopup="true" aria-expanded="false" style="color: black;">Contact Us</a>
+    </nav>
+    <button>
+      <svg aria-hidden="true" viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="7" stroke="#203446" stroke-width="2" fill="none"/>
+        <line x1="21" y1="21" x2="16.65" y2="16.65" stroke="#203446" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </header>
+    <h1>About Us</h1>
+    <div class="container">
+        <div>
+            <a href="{%url 'Index' %}">Home</a>
+        </div>
+        <div class="admin-card">
+            <h2>Anamol Shrestha</h2>
+            <p class="admin-info">?????????????????????</p>
+            <p class="admin-info">?????????????????????</p>
+            <p class="admin-info">?????????????????????</p>
+            <p class="admin-info">?????????????????????</p>
+        </div>
+        <div class="admin-card">
+            <h2>Subash Karki</h2>
+            <p class="admin-info">?????????????????????</p>
+            <p class="admin-info">?????????????????????</p>
+            <p class="admin-info">?????????????????????</p>
+            <p class="admin-info">?????????????????????</p>
+        </div>
+        <div class="admin-card">
+            <h2>Krish Baniya</h2>
+            <p class="admin-info">?????????????????????</p>
+            <p class="admin-info">?????????????????????</p>
+            <p class="admin-info">?????????????????????</p>
+            <p class="admin-info">?????????????????????</p>
+        </div>
+    </div>
+    <div class ="container1">
+         <h2 style="text-align: center;">About Job Hunting</h2>
+            <p>Job Hunting is designed to bridge opportunity and ambition. Whether you're a job seeker looking for your next adventure, a scout aiming to find the right candidate, or an admin shaping the workforce, this platform gives each role the tools they need.</p>
+
+            <p>Developed with modularity, clarity, and growth in mind, JobHuntPro offers role-based control, interview coordination, and direct job matching — all in one place.</p>
+
+            <p>We believe in simplifying hiring while making it personal.</p>
+    </div>
+</body>
+</html>

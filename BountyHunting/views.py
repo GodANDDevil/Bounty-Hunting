@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import Scout, Seeker
+from .models import Scout, Seeker, JobPost
 
 # Create your views here.
 
@@ -15,6 +15,7 @@ def LoginScout(request):
         try:
             user = Scout.objects.get(scout_gmail=gmail)
             if user.scout_password == password:
+                request.session['scout__Company_name']=user.scout_Company_name
                 return redirect('HomepageScout')
             else:
                 return render(request, 'LoginScout.html', {'error_message': 'Invalid password'})
@@ -31,6 +32,7 @@ def LoginSeeker(request):
         try:
             user = Seeker.objects.get(seeker_gmail=gmail)
             if user.seeker_password == password:
+                request.session['seeker_Full_name']=user.seeker_Full_name
                 return redirect('HomepageSeeker')
             else:
                 return render(request, 'LoginSeeker.html', {'error_message': 'Invalid password'})
@@ -80,10 +82,50 @@ def RegisterSeeker(request):
     return render(request, 'RegisterSeeker.html')
 
 def HomepaheSeeker(request):
-    return render(request, 'HomepageSeeker.html')
+    jobs = JobPost.objects.all()
+    seeker_Full_name = request.session.get('seeker_Full_name')
+    
+    if not seeker_Full_name:
+        return redirect('LoginSeeker')
+    seeker = Seeker.objects.get(seeker_Full_name=seeker_Full_name)
+    return render(request, 'HomepageSeeker.html', {'seeker': seeker, 'jobs': jobs})
 
 def HomepageScout(request):
-    return render(request, 'HomepageScout.html')
+    jobs = JobPost.objects.all()
+    scout_Company_name = request.session.get('scout__Company_name')
+
+    if not scout_Company_name:
+        return redirect('LoginScout')
+    scout = Scout.objects.get(scout_Company_name=scout_Company_name)
+    return render(request, 'HomepageScout.html',{'scout': scout, 'jobs': jobs})
+
+def AboutUs(request):
+    return render(request, 'AboutUs.html')
+
+def ContactUs(request):
+    return render(request, 'ContactUs.html')
+
+def PostJob(request):
+    if request.method == "POST":
+        scout_Company_name = request.session.get('scout__Company_name')
+        company_name = Scout.objects.get(scout_Company_name=scout_Company_name)
+        title = request.POST.get('title')
+        description = request.POST.get('description')
+        location = request.POST.get('location')
+        salary = request.POST.get('salary')
+        job = JobPost(
+            job_poasted_by=company_name,
+            job_title=title,
+            job_description=description,
+            job_location=location,
+            job_salary=salary
+        )
+        job.save()
+        return redirect('HomepageScout')
+    return render(request, 'PostJob.html')
+
+def Apply(request):
+    return render(request, 'Apply.html')
 
 def login_index(request):
     return render(request, 'Index.html')

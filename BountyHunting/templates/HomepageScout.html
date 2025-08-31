@@ -4,8 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'HomepageScout.css' %}">
 </head>
 <body>
-    
+    <header>
+    <a href="{% url 'Index' %}">
+      <div class="logo" aria-label="">
+      <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="#f5b700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="3 2 21 6 21 18 3 22 3 2"></polygon>
+        <polyline points="3 7 15 11 3 15 3 7"></polyline>
+      </svg>
+      <span class="logo-text"> Job Hunting<span class="highlight"></span></span>
+    </div>
+    </a>
+
+    <nav role="navigation" aria-label="Primary navigation">
+      <a href="{% url 'HomepageScout' %}">Home</a>
+      <a href="{% url 'AboutUs'%}" class="active" aria-current="page">About Us</a>
+      <a href="{% url 'ContactUs'%}" class="dropdown" aria-haspopup="true" aria-expanded="false">Contact Us</a>
+    </nav>
+    <button>
+      <svg aria-hidden="true" viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="7" stroke="#203446" stroke-width="2" fill="none"/>
+        <line x1="21" y1="21" x2="16.65" y2="16.65" stroke="#203446" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </header>
+  <div id ="main_content">
+    <div id="container_user">
+      <h2 id="text1" style="padding-left:3px ;" >Welcome,</h2>
+        <p id="text1"> <span>Company Name:</span><span>{{ scout.scout_Company_name }}</span> </p>
+        <p id="text1"><span>Gmail:</span> <span>{{ scout.scout_gmail }}</span> </p>
+        <p id="text1"><span>Phone Number:</span> <span>{{ scout.scout_phone }}</span> </p>
+        <p id="text1"><span>Address:</span> <span>{{ scout.scout_address }}</span> </p>
+    </div>
+    <div id="job_post">
+        <a href="{% url 'PostJob'%}">Post Job</a>
+      </div>
+    <div id ="container_job">
+      <p id="text1">Posting Jobs:</p>
+      {% for a in jobs %}
+        <div id="job_posting">
+          <h3>Title:{{ a.job_title }}</h3>
+          <p>Location: {{ a.job_location }}</p>
+          <p>Salary: ${{ a.job_salary }}</p>
+        </div>
+        <br>
+      {% endfor %}
+    </div>
+    <div id ="container_adds">
+        Here will be adds to earn money
+    </div>
+  </div>
 </body>
 </html>

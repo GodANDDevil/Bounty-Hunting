@@ -18,3 +18,11 @@ class Seeker(models.Model):
     seeker_address = models.TextField()
     seeker_citi_no = models.CharField(max_length=50)
     seeker_dof = models.DateField()
+
+class JobPost(models.Model):
+    job_poasted_by = models.ForeignKey(Scout, on_delete=models.CASCADE)
+    job_title = models.CharField(max_length=200)
+    job_description = models.TextField()
+    job_location = models.CharField(max_length=100)
+    job_salary = models.DecimalField(max_digits=10, decimal_places=2)
+    

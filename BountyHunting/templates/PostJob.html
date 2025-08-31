@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'HomepageSeeker.css' %}">
+    <link rel="stylesheet" href="{% static 'PostJob.css' %}">
 </head>
 <body>
     <header>
@@ -20,7 +20,7 @@
     </a>
 
     <nav role="navigation" aria-label="Primary navigation">
-      <a href="{% url 'HomepageSeeker' %}">Home</a>
+      <a href="{% url 'HomepageScout' %}">Home</a>
       <a href="{% url 'AboutUs'%}" class="active" aria-current="page">About Us</a>
       <a href="{% url 'ContactUs'%}" class="dropdown" aria-haspopup="true" aria-expanded="false">Contact Us</a>
     </nav>
@@ -31,32 +31,15 @@
       </svg>
     </button>
   </header>
-  <div id ="main_content">
-    <div id="container_user">
-      <div id="logo">
-
-      </div>
-      <h2 id="text1" style="padding-left:3px ;" >Welcome,</h2>
-        <p id="text1"> <span>Username:</span><span>{{ seeker.seeker_Full_name }}</span> </p>
-        <p id="text1"><span>Gmail:</span> <span>{{ seeker.seeker_gmail }}</span> </p>
-        <p id="text1"><span>Phone Number:</span> <span>{{ seeker.seeker_phone }}</span> </p>
-        <p id="text1"><span>Address:</span> <span>{{ seeker.seeker_address }}</span> </p>
-    </div>
-    
-    <div id ="container_job">
-       <p id="text1">Posting Jobs:</p>
-        {% for a in jobs %}
-        <div id="job_posting" onclick="location.href='{% url 'Apply' %}'">
-          <h3>Title:{{ a.job_title }}</h3>
-          <p>Location: {{ a.job_location }}</p>
-          <p>Salary: ${{ a.job_salary }}</p>
-        </div>
-        <br>
-      {% endfor %}
-    </div>
-    <div id ="container_adds">
-        Here will be adds to earn money
-    </div>
+  <div id="form_job">
+  <form action="" method="post">
+    {% csrf_token %}
+    <input type="text" name="title" id="title" placeholder="Title"/>
+    <textarea name="description" id="description">Job Description</textarea>
+    <input type="text" name="location" id="location" placeholder="Location"/>
+    <input type="number" name="salary" id="salary" placeholder="Salary"/>
+    <button type="submit">Post</button>
+  </form>
   </div>
 </body>
 </html>
