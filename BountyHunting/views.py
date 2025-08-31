@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import Scout, Seeker
+
 # Create your views here.
 
 def index(request):
@@ -10,14 +11,15 @@ def LoginScout(request):
         gmail = request.POST.get('gmail')
         password = request.POST.get('password')
         
+            # Add authentication logic here
         try:
-            user = Scout.objects.filter(scout_gmail=gmail)
+            user = Scout.objects.get(scout_gmail=gmail)
             if user.scout_password == password:
-                return render(request, 'HomepageScout.html')
+                return redirect('HomepageScout')
             else:
-                return render(request, 'LoginScout.html')
+                return render(request, 'LoginScout.html', {'error_message': 'Invalid password'})
         except Scout.DoesNotExist:
-            return render(request, 'LoginScout.html')
+            return render(request, 'LoginScout.html', {'error_message': 'User does not exist'})
             
     return render(request, 'LoginScout.html')
 
@@ -26,16 +28,15 @@ def LoginSeeker(request):
         name = request.POST.get('full_name')
         gmail = request.POST.get('gmail')
         password = request.POST.get('password')
-        
         try:
-            user = Seeker.objects.filter(seeker_Full_name=name)
-            if user.seeker_password == password and user.seeker_gmail == gmail:
-                return render(request, 'HomepageSeeker.html')
+            user = Seeker.objects.get(seeker_gmail=gmail)
+            if user.seeker_password == password:
+                return redirect('HomepageSeeker')
             else:
-                return render(request, 'LoginSeeker.html')
+                return render(request, 'LoginSeeker.html', {'error_message': 'Invalid password'})
         except Seeker.DoesNotExist:
-            return render(request, 'LoginSeeker.html')
-
+            return render(request, 'LoginSeeker.html', {'error_message': 'User does not exist'})
+        
     return render(request, 'LoginSeeker.html')
 
 def RegisterScout(request):
@@ -77,6 +78,12 @@ def RegisterSeeker(request):
         data.save()
         return render(request, 'LoginSeeker.html')
     return render(request, 'RegisterSeeker.html')
+
+def HomepaheSeeker(request):
+    return render(request, 'HomepageSeeker.html')
+
+def HomepageScout(request):
+    return render(request, 'HomepageScout.html')
 
 def login_index(request):
     return render(request, 'Index.html')

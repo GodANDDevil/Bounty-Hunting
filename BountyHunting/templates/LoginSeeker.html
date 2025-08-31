@@ -38,6 +38,9 @@
       </p>
       <form action="" method="post" onsubmit="return validation()">
         {% csrf_token %}
+        {% if error_message %}
+        <p style="color: whitesmoke;">{{ error_message }}</p>
+    {% endif %}
         <input type="text" name="full_name" id="full_name" placeholder="Enter your Full Name"/>
         <input type="email" name="gmail" id="gmail" placeholder="Enter Your Gmail" />
         <input type="password" name="password" id="password" placeholder="Enter Your Password"/>
@@ -97,8 +100,8 @@
             }else if(password.length < 8){
                 alert("Password must be at least 8 characters long");
                 return false;
-            return true;
         }
+        return true;
       }
     </script>
 </body>

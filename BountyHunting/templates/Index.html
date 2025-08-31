@@ -3,31 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Welcome</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'Index.css' %}">
 </head>
 <body>
-    <div id="box">
-        <div id="box1">
-            
-        <div id="lr">
-            <a href="{% url 'LoginSeeker' %}"><p>Login as Seeker</p></a>
-        </div>
-        <div id="lr">
-            <a href="{% url 'RegisterSeeker' %}"><p>Register as Seeker</p></a>
-        </div>
-        <img style="margin-bottom:50px ;" src="{% static 'Seeker.png' %}" alt="Img not found">
-    </div>
-    <div id="box2">
-        <img src="{% static 'Scout.png' %}" alt="Img not found">
-        <div id="lr">
-            <a href="{% url 'LoginScout' %}"><p>Login as Scout</p></a>
-        </div>
-        <div id="lr">
-            <a href="{% url 'RegisterScout' %}"><p>Register as Scout</p></a>
+    <main id="box">
+        <!-- Seeker Section -->
+        <section id="box1" class="user-section">
+            <div class="actions">
+                <a href="{% url 'LoginSeeker' %}" class="btn">Login</a>
+                <a href="{% url 'RegisterSeeker' %}" class="btn">Register</a>
             </div>
-        </div>
-    </div>
+            <figure>
+                <img src="{% static 'Seeker.png' %}" alt="Seeker Image" style="margin-bottom: 50px;">
+                <p><b>Seeker</b></p>
+            </figure>
+        </section>
+
+        <!-- Scout Section -->
+        <section id="box2" class="user-section">
+            <figure>
+                <p><b>Scout</b></p>
+                <img src="{% static 'Scout.png' %}" alt="Scout Image">
+            </figure>
+            <div class="actions">
+                <a href="{% url 'LoginScout' %}" class="btn">Login</a>
+                <a href="{% url 'RegisterScout' %}" class="btn">Register</a>
+            </div>
+        </section>
+    </main>
 </body>
 </html>

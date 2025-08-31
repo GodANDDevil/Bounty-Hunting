@@ -8,5 +8,7 @@ urlpatterns = [
     path('LoginSeeker/',views.LoginSeeker,name='LoginSeeker'),
     path('RegisterScout/',views.RegisterScout,name='RegisterScout'),
     path('RegisterSeeker/',views.RegisterSeeker,name='RegisterSeeker'),
-    path('LoginScout/', views.index, name='login_index'),
+    # path('LoginScout/', views.index, name='login_index'),
+    path('HomepageScout/', views.HomepageScout, name='HomepageScout'),
+    path('HomepageSeeker/', views.HomepaheSeeker, name='HomepageSeeker'),
 ]
