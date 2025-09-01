@@ -23,6 +23,7 @@
       <a href="{% url 'HomepageSeeker' %}">Home</a>
       <a href="{% url 'AboutUs'%}" class="active" aria-current="page">About Us</a>
       <a href="{% url 'ContactUs'%}" class="dropdown" aria-haspopup="true" aria-expanded="false">Contact Us</a>
+      <a href="{% url 'LoginSeeker' %}">Login</a>
     </nav>
     <button>
       <svg aria-hidden="true" viewBox="0 0 24 24">
@@ -41,6 +42,8 @@
         <p id="text1"><span>Gmail:</span> <span>{{ seeker.seeker_gmail }}</span> </p>
         <p id="text1"><span>Phone Number:</span> <span>{{ seeker.seeker_phone }}</span> </p>
         <p id="text1"><span>Address:</span> <span>{{ seeker.seeker_address }}</span> </p>
+        <a href="{% url 'ContactUs'%}" id="boxnav">Contact Us</a>
+        <a href="{% url 'AboutUs' %}" id="boxnav">About Us</a>
     </div>
     
     <div id ="container_job">
@@ -51,7 +54,6 @@
           <p>Location: {{ a.job_location }}</p>
           <p>Salary: ${{ a.job_salary }}</p>
         </div>
-        <br>
       {% endfor %}
     </div>
     <div id ="container_adds">
