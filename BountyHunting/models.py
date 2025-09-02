@@ -25,4 +25,5 @@ class JobPost(models.Model):
     job_description = models.TextField()
     job_location = models.CharField(max_length=100)
     job_salary = models.DecimalField(max_digits=10, decimal_places=2)
+    # job_applied_by = 
     
