@@ -35,16 +35,22 @@
     <h2>Apply for this job</h2>
     <div>
         PLease enter your details.
-        <form action="">
+        <form action="" onsubmit="return Apply()">
             {% csrf_token %}
             <p>(Note: )</p>
-            <br><input type="text" name="slc" id="slc" placeholder="Marks Obtained in SLC">
+            <input type="text" name="slc" id="slc" placeholder="Marks Obtained in SLC">
             <input type="text" name="inter" id="inter" placeholder="Marks Obtained Intermediate">
             <input type="text" name="bachelor" id="bachelor" placeholder="Marks Obtained Bachelor()">
             <input type="text" name="master" id="master" placeholder="Marks Obtained Master">
-            <br><br><button type="submit" id="apply1" onclick="alert('Done Application')">Apply</button>
+            <textarea name="other" id="other" cols="30" rows="5" placeholder="Other Qualification like Experience, Online Course"></textarea>
+            <br><br><button type="submit" id="apply1">Apply</button>
         </form>
     </div>
   </div>
+  <script>
+    function Apply(){
+        alert("Applied Successfully")
+        }
+  </script>
 </body>
 </html>

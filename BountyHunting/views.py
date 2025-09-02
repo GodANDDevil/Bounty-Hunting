@@ -84,10 +84,13 @@ def RegisterSeeker(request):
 def HomepaheSeeker(request):
     jobs = JobPost.objects.all()
     seeker_Full_name = request.session.get('seeker_Full_name')
-    
+    search_job = request.GET.get('search_job')
     if not seeker_Full_name:
         return redirect('LoginSeeker')
     seeker = Seeker.objects.get(seeker_Full_name=seeker_Full_name)
+    if search_job:
+        data = JobPost.objects.filter(job_title=search_job)
+        return render(request, 'HomepageSeeker.html', {'jobs': data})
     return render(request, 'HomepageSeeker.html', {'seeker': seeker, 'jobs': jobs})
 
 def HomepageScout(request):
