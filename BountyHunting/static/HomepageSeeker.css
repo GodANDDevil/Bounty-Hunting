@@ -171,24 +171,30 @@ button svg {
   background-color: #1e293b;
   border-radius: 15px;
   width: 280px;
-  height: 350px;
+  height: 570px;
   color: #f9fafb;
   text-align: center;
   padding: 25px 20px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 600;
-  font-size: 1.1rem;
-  box-shadow: 0 3px 10px rgba(30,41,59,0.5);
+  flex-direction: column; 
+  justify-content: flex-start;
+  align-items: center; 
+  gap: 20px; 
+  box-shadow: 0 3px 10px rgba(30,41,59,0.5); 
 }
 
-/* Job post & container */
-#job_post {
-  position: absolute;
+#container_adds img {
+  width: 100%;  /* constrain width to container */
+  height: 285px;     /* maintain aspect ratio */
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+#job_search {
   top: 30px;
   right: 320px;
-  background-color: #f5b700;
+  background-color: white;
   color: #1e293b;
   font-weight: 600;
   font-size: 1rem;
@@ -202,10 +208,10 @@ button svg {
   text-decoration: none;
   display: inline-block;
 }
-#job_post:hover {
+
+#job_search:hover {
   background-color: #d49b00;
 }
-
 #container_job {
   background-color: #1e293b;
   border-radius: 15px;
@@ -243,6 +249,11 @@ button svg {
   max-width: 420px;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+#container_adds img{
+  width: 280px;
+  height: 350px;
+  border-radius: 10px;
 }
 
 #job_posting:hover {

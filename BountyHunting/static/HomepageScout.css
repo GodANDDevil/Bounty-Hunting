@@ -168,21 +168,30 @@ button svg {
 
 /* Ads container */
 #container_adds {
-  background-color: #1e293b;
+  background-color: #1e293b; /* Uncomment to match dark theme */
   border-radius: 15px;
   width: 280px;
-  height: 350px;
+  height: 570px;
   color: #f9fafb;
   text-align: center;
   padding: 25px 20px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 600;
-  font-size: 1.1rem;
+  flex-direction: column; /* stack images vertically */
+  justify-content: flex-start; /* align images to top */
+  align-items: center; /* center images horizontally */
+  gap: 20px; /* spacing between images */
   box-shadow: 0 3px 10px rgba(30,41,59,0.5);
+  overflow-y: auto; /* enable vertical scroll if needed */
 }
-
+#container_adds img {
+  width: 100%; /* full width of container minus padding */
+  max-width: 240px; /* optional max-width to prevent overscale */
+  height: auto;
+  border-radius: 10px;
+  object-fit: contain; /* maintain aspect ratio */
+  cursor: pointer; /* visually indicate clickable links */
+  transition: transform 0.3s ease;
+}
 /* Job post & container */
 #job_post {
   position: flex;

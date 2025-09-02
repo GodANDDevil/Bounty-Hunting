@@ -21,7 +21,7 @@
 
     <nav role="navigation" aria-label="Primary navigation">
       <a href="{% url 'HomepageScout' %}">Home</a>
-      <a href="{% url 'AboutUs'%}" class="active" aria-current="page">About Us</a>
+      <a href="{% url 'AboutUs'%}"  aria-current="page">About Us</a>
       <a href="{% url 'ContactUs'%}" class="dropdown" aria-haspopup="true" aria-expanded="false">Contact Us</a>
       <a href="{% url 'LoginScout' %}">Login</a>
     </nav>
@@ -57,8 +57,9 @@
       {% endfor %}
     </div>
     <div id ="container_adds">
-        Here will be adds to earn money
-    </div>
+    <a href="https://www.facebook.com/KathBernHardtCollege"><img src="{% static 'Adds.png' %}" alt="" id="kbc"></a><br>
+    <a href="https://www.facebook.com/ITCLUB.KBC"><img src="{% static 'Itclub.jpeg' %}" alt="" id="itclub"></a>
+</div>
   </div>
 </body>
 </html>
