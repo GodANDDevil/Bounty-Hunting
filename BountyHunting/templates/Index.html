@@ -7,29 +7,28 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'Index.css' %}">
 </head>
+
 <body>
     <main id="box">
         <!-- Seeker Section -->
         <section id="box1" class="user-section">
-            <div class="actions">
-                <a href="{% url 'LoginSeeker' %}" class="btn">Login</a>
-                <a href="{% url 'RegisterSeeker' %}" class="btn">Register</a>
+            <div class="overlay">
+                <h2>Seeker</h2>
+                <div class="actions">
+                    <a href="{% url 'LoginSeeker' %}" class="btn">Login</a>
+                    <a href="{% url 'RegisterSeeker' %}" class="btn">Register</a>
+                </div>
             </div>
-            <figure>
-                <img src="{% static 'Seeker.png' %}" alt="Seeker Image" style="margin-bottom: 50px;">
-                <p><b>Seeker</b></p>
-            </figure>
         </section>
 
         <!-- Scout Section -->
         <section id="box2" class="user-section">
-            <figure>
-                <p><b>Scout</b></p>
-                <img src="{% static 'Scout.png' %}" alt="Scout Image">
-            </figure>
-            <div class="actions">
-                <a href="{% url 'LoginScout' %}" class="btn">Login</a>
-                <a href="{% url 'RegisterScout' %}" class="btn">Register</a>
+            <div class="overlay">
+                <h2>Scout</h2>
+                <div class="actions">
+                    <a href="{% url 'LoginScout' %}" class="btn">Login</a>
+                    <a href="{% url 'RegisterScout' %}" class="btn">Register</a>
+                </div>
             </div>
         </section>
     </main>

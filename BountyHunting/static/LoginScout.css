@@ -206,7 +206,8 @@
       max-width: 90vw;
       aspect-ratio: 1 / 1.1;
       overflow: visible;
-      order: 1; /* Added to position the image on the left */
+      order: 1; 
+      padding-left: 8px;
     }
 
     .image-shape {
