@@ -23,12 +23,10 @@
             background-position: center;
         }
 
-        /* Seeker background */
         #box1 {
             background-image: url("https://images.unsplash.com/photo-1522202176988-66273c2fd55f");
         }
 
-        /* Scout background */
         #box2 {
             background-image: url("https://images.unsplash.com/photo-1531497865144-0464ef8fb9a9");
         }
