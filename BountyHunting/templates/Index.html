@@ -12,6 +12,11 @@
     <main id="box">
         <!-- Seeker Section -->
         <section id="box1" class="user-section">
+            <div id="seeker_img">
+                {% for img in seeker_img %}
+                    <img class="slide" src="{{img.index_seeker_img.url}}" alt="Img not found">
+                {% endfor %}
+            </div>
             <div class="overlay">
                 <h2>Seeker</h2>
                 <div class="actions">
@@ -23,6 +28,11 @@
 
         <!-- Scout Section -->
         <section id="box2" class="user-section">
+            <div id="scout_img">
+                {% for img in scout_img %}
+                <img class="slide" src="{{ img.index_scout_img.url }}" alt="Img not found">
+                {% endfor %}
+            </div>
             <div class="overlay">
                 <h2>Scout</h2>
                 <div class="actions">
@@ -32,5 +42,25 @@
             </div>
         </section>
     </main>
+    <script>
+        const seeker_img = document.querySelectorAll('#seeker_img .slide');
+        const scout_img = document.querySelectorAll('#scout_img .slide');
+
+        let index_seeker = 0, index_scout = 0;
+
+        function showImage() {
+            seeker_img.forEach(img => img.classList.remove('active'));
+            scout_img.forEach(img => img.classList.remove('active'));
+
+            seeker_img[index_seeker].classList.add('active');
+            scout_img[index_scout].classList.add('active');
+
+            index_seeker = (index_seeker + 1) % seeker_img.length;
+            index_scout = (index_scout + 1) % scout_img.length;
+    }
+
+    showImage();
+    setInterval(showImage, 3500);
+    </script>
 </body>
 </html>

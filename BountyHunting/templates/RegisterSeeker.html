@@ -1,86 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'RegisterSeeker.css' %}">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Register - Scout</title>
+
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'RegisterSeeker.css' %}" />
+
 </head>
+
 <body>
-    <div class="container" role="main">
-    <section class="left-panel" aria-label="Create account panel">
-      <h2>Create Account</h2>
-      <form action="" method="post" onsubmit="return validation()">
-        {% csrf_token %}
-            <input type="text" name="full_name" id="full_name" placeholder="Enter Your Full Name">
-            <input type="email" name="gmail" id="gmail" placeholder="Enter Your Gmail">
-            <input type="password" name="password" id="password" placeholder="Enter Your Password">
-            <input type="number" name="phone_numbr" id="phone_number" placeholder="Enter Your Phone Number">
-            <input type="text" name="address" id="address" placeholder="Enter Your Address">
-            <input type="text" name="cert_no" id="cert_no" placeholder="Enter Your Citizenship Certificate Number">
-            <input type="date" name="dof" id="dof" placeholder="Enter Your Date of Birth">
-            <button type="submit" class="sign-up-btn">Register</button>
-        </form>
-    </section>
-    <section class="right-panel" aria-label="Welcome and sign in panel">
-      <div class="welcome-text">
-        <h1>WELCOME Seeker!</h1>
-       
+  <header>
+   <div class="logo">
+  <a href="{% url 'Index' %}">Job <span>Hunting</span></a>
+</div>
+    <nav>
+      <a href="{% url 'Index' %}">Home</a>
+      <a href="{% url 'AboutUs' %}">About Us</a>
+      <a href="{% url 'ContactUs' %}">Contact Us</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container">
+      <!-- Image Section -->
+      <div class="image-wrapper">
+        {% for img in register_img %}
+        <img 
+          src="{{img.register_img.url}}" 
+          alt="Professional Office"
+          loading="lazy"
+        />
+        {% endfor %}
       </div>
-    </section>
-  </div>
-    <script>
-        function validation(){
-            //Validation of Full Name
-            var fullName = document.getElementById("full_name").value;
-            if (fullName == ""){
-                alert("Please enter your full name");
-                return false;
-            }
-            var conformation = /^[A-Za-z]+$/;
-            if (!conformation.test(fullName)){
-                alert("Please enter a valid full name");
-                return false;
-            }
-            //Validation of gmail
-            var gmail = document.getElementById("gmail").value;
-            var slice1 = gmail.slice(-10);
-            if (gmail == ""){
-                alert("Please enter your Gmail");
-                return false;
-            }else if(slice1 != "@gmail.com"){
-                alert("Please enter a valid Gmail");
-                return false;
-            }
-            //Validation of phone number
-            var phone_number = document.getElementById("phone_number").value;
-            if (phone_number == ""){
-                alert("Please enter your phone number");
-                return false;
-            }else if(phone_number.length != 10){
-                alert("Phone number must be 10 digits long");
-                return false;
-            }
-            //Validation of address
-            var address = document.getElementById("address").value;
-            if (address == ""){
-                alert("Please enter your address");
-                return false;
-            }
-            //Validation of citizenship certificate number
-            var cert_no = document.getElementById("cert_no").value;
-            if (cert_no == ""){
-                alert("Please enter your citizenship certificate number");
-                return false;
-            }
-            //Validation of Date of Birth
-            var dob = document.getElementById("dof").value;
-            if (dob == ""){
-                alert("Please enter your date of birth");
-                return false;
-            }
-        }
-    </script>
+
+      <!-- Form Section -->
+      <section class="form-section">
+        <h2>Create Your Account</h2>
+        <p>Join Scout to manage your company efficiently.</p>
+
+        <form action="" method="post" onsubmit="return validation()">
+          {% csrf_token %}
+
+          <input type="text" name="company_name" id="company_name" placeholder="Company Name" />
+          <input type="email" name="gmail" id="gmail" placeholder="Gmail" />
+          <input type="password" name="password" id="password" placeholder="Password" />
+          <input type="number" name="number" id="phone_number" placeholder="Phone Number" />
+          <input type="text" name="address" id="address" placeholder="Address" />
+          <input type="number" name="reg_no" id="reg_no" placeholder="Business Registration Number" />
+
+          <button type="submit">Register</button>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    function validation() {
+      var company_name = document.getElementById("company_name").value;
+      if (company_name === "") {
+        alert("Please enter your company name");
+        return false;
+      }
+
+      var gmail = document.getElementById("gmail").value;
+      if (gmail === "") {
+        alert("Please enter your Gmail");
+        return false;
+      }
+      if (!gmail.endsWith("@gmail.com")) {
+        alert("Please enter a valid Gmail");
+        return false;
+      }
+
+      var password = document.getElementById("password").value;
+      if (password === "") {
+        alert("Please enter your password");
+        return false;
+      }
+
+      var phone_number = document.getElementById("phone_number").value;
+      if (phone_number === "") {
+        alert("Please enter your phone number");
+        return false;
+      }
+      if (phone_number.length !== 10) {
+        alert("Phone number must be 10 digits long");
+        return false;
+      }
+
+      var address = document.getElementById("address").value;
+      if (address === "") {
+        alert("Please enter your address");
+        return false;
+      }
+
+      var reg_no = document.getElementById("reg_no").value;
+      if (reg_no === "") {
+        alert("Please enter your business registration number");
+        return false;
+      }
+
+      return true;
+    }
+  </script>
 </body>
 </html>

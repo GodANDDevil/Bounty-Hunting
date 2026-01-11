@@ -4,105 +4,77 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Creative Marketing Bounty Hunting</title>
+
   {% load static %}
-  <link rel="stylesheet" href="{%static 'LoginSeeker.css' %}">
+  <link rel="stylesheet" href="{% static 'LoginSeeker.css' %}">
+
 </head>
+
 <body>
-   <header>
-    <a href="{% url 'Index' %}">
-      <div class="logo" aria-label="">
-      <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="#f5b700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polygon points="3 2 21 6 21 18 3 22 3 2"></polygon>
-        <polyline points="3 7 15 11 3 15 3 7"></polyline>
-      </svg>
-      <span class="logo-text"> Job Hunting<span class="highlight"></span></span>
+
+<header>
+<div class="logo">
+  <a href="{% url 'Index' %}">Job <span>Hunting</span></a>
+</div>
+  <nav>
+    <a href="{% url 'Index' %}">Home</a>
+    <a href="{% url 'AboutUs' %}">About Us</a>
+    <a href="{% url 'ContactUs' %}">Contact Us</a>
+  </nav>
+</header>
+
+<main>
+  <div class="container">
+    <!-- Image Section -->
+ <div class="image-wrapper">
+    
+    {% for img in login_img %}
+    <img 
+        src="{{img.login_img.url}}"
+        alt="Professional working in modern office"
+        loading="lazy"
+      />
+    {% endfor %}
     </div>
-    </a>
-    <nav role="navigation" aria-label="Primary navigation">
-      <a href="{% url 'AboutUs'%}"  aria-current="page" style="color: white;">About Us</a>
-      <a href="{% url 'ContactUs'%}" class="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">Contact Us</a>
-    </nav>
-    <button>
-      <svg aria-hidden="true" viewBox="0 0 24 24">
-        <circle cx="11" cy="11" r="7" stroke="#203446" stroke-width="2" fill="none"/>
-        <line x1="21" y1="21" x2="16.65" y2="16.65" stroke="#203446" stroke-width="2" stroke-linecap="round"/>
-      </svg>
-    </button>
-  </header>
-  <main>
-    <section class="content-left" role="main" tabindex="0">
-      <h1><span>Login Now</span> <strong>to Our Job Hunting</strong></h1>
-      <p>
-       
-      </p>
+    <!-- Form Section -->
+    <section class="content-left">
+      <h1>Subscribe Now <br>to Our Bounty Hunting</h1>
+      <p>Your comprehensive solution for creative marketing.</p>
+
       <form action="" method="post" onsubmit="return validation()">
         {% csrf_token %}
+
         {% if error_message %}
-        <p style="color: whitesmoke;">{{ error_message }}</p>
-    {% endif %}
-        <input type="text" name="full_name" id="full_name" placeholder="Enter your Full Name"/>
-        <input type="email" name="gmail" id="gmail" placeholder="Enter Your Email" />
-        <input type="password" name="password" id="password" placeholder="Enter Your Password"/>
+          <p style="color:red; margin-bottom:10px;">{{ error_message }}</p>
+        {% endif %}
+
+        <input type="email" name="gmail" id="gmail" placeholder="Email" />
+        <input type="password" name="password" id="password" placeholder="Password" />
         <button type="submit">Enter</button>
       </form>
     </section>
-    <div class="image-wrapper" aria-hidden="true">
-      <div class="image-shape">
-        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/b9fa1ea2-412d-4fd1-909c-f48a444d2f89.png" alt="Professional man in denim shirt smiling while working on a laptop in a modern office environment with coworkers in background" loading="lazy" />
-        <div class="decorative-line"></div>
-      </div>
-      <svg class="icon rocket" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <path d="M12 2l3 9-3-2-3 2 3-9z"></path>
-        <path d="M5 15v4a1 1 0 001 1h12a1 1 0 001-1v-4"></path>
-        <circle cx="12" cy="17" r="3"></circle>
-      </svg>
-      <svg class="icon chat" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <rect x="2" y="4" width="20" height="14" rx="2" ry="2"></rect>
-        <path d="M8 10h8M8 14h5"></path>
-      </svg>
-      <svg class="icon target" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <circle cx="12" cy="12" r="10"></circle>
-        <circle cx="12" cy="12" r="6"></circle>
-        <circle cx="12" cy="12" r="2"></circle>
-        <line x1="22" y1="2" x2="16" y2="8"></line>
-      </svg>
-    </div>
-  </main>
-  <script>
-        function validation(){
-            //Validation full name
-            var fullName = document.getElementById("full_name").value;
-            if (fullName == ""){
-                alert("Please enter your full name");
-                return false;
-            }
-            var conformation =/^[A-Za-z]+$/;
-            if (!conformation.test(fullName)){
-                alert("Please enter a valid full name");
-                return false;
-            }
-            //Validation of gmail
-            var gmail = document.getElementById("gmail").value;
-            var slice1 = gmail.slice(-10);
-            if (gmail == ""){
-                alert("Please enter your Gmail");
-                return false;
-            }else if(slice1 != "@gmail.com"){
-                alert("Please enter a valid Gmail");
-                return false;
-            }
-            //Validation of password
-            var password = document.getElementById("password").value;
-            if (password == ""){
-                alert("Please enter your password");
-                return false;
-            }else if(password.length < 8){
-                alert("Password must be at least 8 characters long");
-                return false;
-        }
-        return true;
-      }
-    </script>
+  </div>
+</main>
+
+<script>
+function validation() {
+    var gmail = document.getElementById("gmail").value;
+    if (gmail === "") {
+        alert("Please enter your Gmail");
+        return false;
+    }
+    if (!gmail.endsWith("@gmail.com")) {
+        alert("Please enter a valid Gmail");
+        return false;
+    }
+    var password = document.getElementById("password").value;
+    if (password === "") {
+        alert("Please enter your password");
+        return false;
+    }
+    return true;
+}
+</script>
+
 </body>
 </html>
-

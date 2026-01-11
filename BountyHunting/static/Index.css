@@ -23,13 +23,34 @@
             background-position: center;
         }
 
-        #box1 {
-            background-image: url("https://images.unsplash.com/photo-1522202176988-66273c2fd55f");
-        }
+        #seeker_img, #scout_img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 0;
+    overflow: hidden;
+}
 
-        #box2 {
-            background-image: url("https://images.unsplash.com/photo-1531497865144-0464ef8fb9a9");
-        }
+#seeker_img img,
+#scout_img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 2s ease-in-out;
+}
+
+.slide {
+    display: none;
+    opacity: 0;
+}
+
+.slide.active {
+    display: block;
+    opacity: 1;
+}
 
         .overlay {
             position: absolute;

@@ -1,12 +1,16 @@
 from django.shortcuts import render,redirect
-from .models import Scout, Seeker, JobPost
+from .models import Scout, Seeker, JobPost, Index_Scout_Images, Index_Seeker_Images, Ads_Images, Login_Images, Register_Images
 
 # Create your views here.
 
 def index(request):
-    return render(request, 'Index.html')
+    seeker_img = Index_Seeker_Images.objects.filter(index_seeker_img__isnull=False)
+    scout_img = Index_Scout_Images.objects.filter(index_scout_img__isnull=False)
+
+    return render(request, 'Index.html', {'seeker_img':seeker_img, 'scout_img':scout_img})
 
 def LoginScout(request):
+    login_img = Login_Images.objects.filter(login_img__isnull=False)
     if request.method == "POST":
         gmail = request.POST.get('gmail')
         password = request.POST.get('password')
@@ -22,9 +26,10 @@ def LoginScout(request):
         except Scout.DoesNotExist:
             return render(request, 'LoginScout.html', {'error_message': 'User does not exist'})
             
-    return render(request, 'LoginScout.html')
+    return render(request, 'LoginScout.html',{'login_img':login_img})
 
 def LoginSeeker(request):
+    login_img = Login_Images.objects.filter(login_img__isnull=False)
     if request.method == "POST":
         name = request.POST.get('full_name')
         gmail = request.POST.get('gmail')
@@ -39,9 +44,10 @@ def LoginSeeker(request):
         except Seeker.DoesNotExist:
             return render(request, 'LoginSeeker.html', {'error_message': 'User does not exist'})
         
-    return render(request, 'LoginSeeker.html')
+    return render(request, 'LoginSeeker.html',{'login_img':login_img})
 
 def RegisterScout(request):
+    register_img = Register_Images.objects.filter(register_img__isnull=False)
     if request.method == "POST":
         company_name = request.POST.get('company_name')
         gmail = request.POST.get('gmail')
@@ -58,9 +64,10 @@ def RegisterScout(request):
                    )
         data.save()
         return render(request, 'LoginScout.html')
-    return render(request, 'RegisterScout.html')
+    return render(request, 'RegisterScout.html',{'register_img':register_img})
 
 def RegisterSeeker(request):
+    register_img = Register_Images.objects.all()
     if request.method == "POST":
         full_name = request.POST.get('full_name')
         gmail = request.POST.get('gmail')
@@ -79,7 +86,7 @@ def RegisterSeeker(request):
                     )
         data.save()
         return render(request, 'LoginSeeker.html')
-    return render(request, 'RegisterSeeker.html')
+    return render(request, 'RegisterSeeker.html', {'register_img': register_img})
 
 def HomepaheSeeker(request):
     jobs = JobPost.objects.all()

@@ -1,6 +1,8 @@
 from BountyHunting import views
 from django.urls import path
 from . import views  
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.index, name='Index'),
@@ -15,4 +17,5 @@ urlpatterns = [
     path('ContactUs/', views.ContactUs, name='ContactUs'),
     path('PostJob/', views.PostJob, name='PostJob'),
     path('Apply/', views.Apply, name='Apply'),
-]
+]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
